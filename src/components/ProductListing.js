@@ -1,26 +1,65 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import {connect} from 'react-redux';
+import {productRequestAction } from './../redux';
 
-class ProductListing extends Component {
+class ProductListing extends React.Component {
+
     constructor(props) {
-        super(props);
-
+        super(props)
+        this.state = {
+            username : '',
+            password : ''
+        }
     }
 
-     componentDidMount() {
+    /*_onClick = ( username, password) => {
+        this.props.loginTrigger( username , password);
+    }*/
+
+    componentDidMount() {
+        this.props.productInfoTrigger();
     }
 
-    render() {
+    _onChange = (type, value) => {
+        if(type && value ) {
+            console.log(" =_onChange== ",type, " ", this.state[type]," == ",value)            
+            this.setState({ [type] : value})
+        }
+        
+    }
+    render () {
+
+        const{username, password} = this.state;
+        const{products, loginTrigger} = this.props;
+
+        console.log("products ",products)
         return (
             <div>
-
+                Product page <br/>
+                {
+                    products.data.map( p => {
+                        return (<div key={p.id}>
+                                    <div><img src={p.image} height="50" width="50"/></div>
+                                    <div>{p.brand}</div>
+                                </div>    
+                                )
+                    })
+                }
             </div>
         );
     }
 }
 
-ProductListing.propTypes = {
+const mapsStateToProps = (state) => {
+    return {
+        products : state.products
+    }
+}
 
-};
+const mapsDispatchToProps = (dispatch) => {
+    return {
+        productInfoTrigger : () => dispatch(productRequestAction())
+    }
+}
 
-export default ProductListing;
+export default connect(mapsStateToProps, mapsDispatchToProps)(ProductListing);
