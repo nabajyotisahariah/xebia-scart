@@ -1,8 +1,8 @@
-import {LOGIN_USER_INITIATE, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE} from './userType'
+import {LOGIN_USER_INITIATE, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER_REQUEST} from './userType'
 import axios from 'axios';
 //const axios = require('axios');
 
-export const loginUserAction = () => {
+export const loginInitiateAction = () => {
     return {
         type : LOGIN_USER_INITIATE
     }
@@ -23,9 +23,9 @@ export const failureRequestAction = (err) => {
 }
 
 
-export const asyncLoginAction = (username, password) => {
+export const loginAction = (username, password) => {
     return (dispatch) => {
-        dispatch(loginUserAction());
+        dispatch(loginInitiateAction());
         axios.get('https://xebiascart.herokuapp.com/users?username=amigo', {})
         .then( response => {
             console.log(response);
@@ -47,5 +47,11 @@ export const asyncLoginAction = (username, password) => {
         .finally(function () {
             // always executed
         });  
+    }
+}
+
+export const logoutAction = () => {
+    return {
+        type:LOGOUT_USER_REQUEST        
     }
 }

@@ -1,4 +1,4 @@
-import {LOGIN_USER_INITIATE, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE} from './userType'
+import {LOGIN_USER_INITIATE, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE, LOGOUT_USER_REQUEST} from './userType'
 
 var initialState = {
     loading: false,
@@ -24,7 +24,13 @@ export const userReducer = (state = initialState, action) => {
                 loading : false,
                 data : [],
                 error : action.payload
-            }    
+            }
+        case LOGOUT_USER_REQUEST: 
+            return {
+                loading : false,
+                data : [],
+                error : null
+            }        
         default:
             return state
     }

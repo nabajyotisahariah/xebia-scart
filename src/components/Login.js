@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {asyncLoginAction} from './../redux';
+import {loginAction } from './../redux';
 
 class Login extends React.Component {
 
@@ -12,9 +12,9 @@ class Login extends React.Component {
         }
     }
 
-    _onClick = ( username, password) => {
+    /*_onClick = ( username, password) => {
         this.props.loginTrigger( username , password);
-    }
+    }*/
 
     _onChange = (type, value) => {
         if(type && value ) {
@@ -26,14 +26,14 @@ class Login extends React.Component {
     render () {
 
         const{username, password} = this.state;
-        const{user} = this.props;
+        const{user, loginTrigger} = this.props;
 
         return (
             <div>
                 Login page <br/>
                 <input type="text" name="username" value={username} onChange={(e)=>this._onChange('username', e.target.value)} /> <br/>
                 <input type="text" name="password" value={password} onChange={(e)=>this._onChange('password', e.target.value)} /> <br/>
-                <button onClick={() => this._onClick(username, password)}>Login </button>
+                <button onClick={() => loginTrigger(username, password)}>Login </button>
             </div>
         );
     }
@@ -47,7 +47,7 @@ const mapsStateToProps = (state) => {
 
 const mapsDispatchToProps = (dispatch) => {
     return {
-        loginTrigger : (username, password) => dispatch(asyncLoginAction(username, password))
+        loginTrigger : (username, password) => dispatch(loginAction(username, password))
     }
 }
 
