@@ -72,16 +72,10 @@ export const searchRequestAction = (searchBy) => {
                 else {
                     dispatch( productFaliureAction("No data"));
                 }*/
-            }
-            else {
-                //dispatch( productFaliureAction("No data"));
-            }
-            
-            
+            }            
         })
         .catch( error => {
             console.log(error);
-            //dispatch( productFaliureAction(error));
         })
     }
 }
@@ -101,15 +95,9 @@ export const filterRequestAction = () => {
                 }
                
             }
-            else {
-                //dispatch( productFaliureAction("No data"));
-            }
-            
-            
         })
         .catch( error => {
             console.log(error);
-            //dispatch( productFaliureAction(error));
         })
     }
 }

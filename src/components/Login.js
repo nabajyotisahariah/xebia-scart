@@ -12,6 +12,11 @@ class Login extends React.Component {
         }
     }
 
+    componentDidMount = () => {
+       if(localStorage.getItem('userInfo') != null) {            
+            this.props.history.push('/product')
+        }
+    }
     /*_onClick = ( username, password) => {
         this.props.loginTrigger( username , password);
     }*/

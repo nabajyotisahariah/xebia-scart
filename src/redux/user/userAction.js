@@ -22,7 +22,8 @@ export const failureRequestAction = (err) => {
     }
 }
 
-
+//a. Username: amigo
+//b. Password: delta
 export const loginAction = (username, password) => {
     return (dispatch) => {
         dispatch(loginInitiateAction());
@@ -33,6 +34,7 @@ export const loginAction = (username, password) => {
 
             console.log("asyncLoginAction ",user," == ",user.username, " = ",user.password," == ",username," = ",password)
             if(user.username == username && user.password == password) {
+                localStorage.setItem("userInfo", JSON.stringify(user))
                 dispatch( successRequestAction(user));
             }
             else {

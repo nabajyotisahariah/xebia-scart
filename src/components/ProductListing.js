@@ -19,6 +19,10 @@ class ProductListing extends React.Component {
         this.props.productInfoTrigger();
         this.props.filterTrigger();
 
+        if(localStorage.getItem('userInfo')==null) {            
+            this.props.history.push('/login')
+        }
+        
     }
 
     render () {
