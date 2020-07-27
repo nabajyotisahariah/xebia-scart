@@ -47,7 +47,7 @@ export const loginAction = (username, password) => {
         .finally(function () {
             // always executed
         });  
-    }
+    }    
 }
 
 export const logoutAction = () => {

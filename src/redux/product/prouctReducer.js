@@ -2,7 +2,9 @@ import * as Type from './productType'
 
 var initialState = {
     loading: false,
-    data : [],
+    productList : [],
+    searchList : [],
+    filterList : [],
     error : null
 }
 export const productReducer = (state = initialState, action) => {
@@ -15,26 +17,30 @@ export const productReducer = (state = initialState, action) => {
             }
         case Type.PRODUCT_SUCCESS:
             return {
+                ...state,
                 loading : false,
-                data : action.payload,
+                productList : action.payload,
                 error : null
             }
         case Type.PRODUCT_FAILURE:
             return {
+                ...state,
                 loading : false,
-                data : [],
+                productList : [],
                 error : action.payload
             }
         case Type.PRODUCT_SEARCH: 
             return {
+                ...state,
                 loading : false,
-                data : [],
+                searchList : [],
                 error : null
             }        
         case Type.PRODUCT_FILTER: 
             return {
+                ...state,
                 loading : false,
-                data : [],
+                filterList : action.payload,
                 error : null
             }            
         default:
