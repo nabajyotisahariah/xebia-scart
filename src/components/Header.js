@@ -32,7 +32,7 @@ class Header extends React.Component {
           "Login"
         )}
         <br/>
-        Cart {productCart}
+        Cart {productCart} item
       </header>
     );
   }
