@@ -58,20 +58,20 @@ export const productRequestAction = () => {
 //https://xebiascart.herokuapp.com/products?title=provogue - Autocomplete
 //https://xebiascart.herokuapp.com/filters - Group Filter
 
-export const searchRequestAction = (searchBy) => {
+export const searchRequestAction = (key) => {
 
     return (dispatch) => {
-        axios.get('https://xebiascart.herokuapp.com/products?title=provogue', {})
+        return axios.get('https://xebiascart.herokuapp.com/products?title='+key, {})
         .then( response => {
             console.log("searchRequestAction ", response);
             if(response.status == 200) {
-                /*const products = response.data;
+                const products = response.data;
                 if(products) {
-                    dispatch( productSuccessAction(products));
+                    dispatch({type: Type.PRODUCT_SEARCH,
+                              payload: products
+                            });
                 }
-                else {
-                    dispatch( productFaliureAction("No data"));
-                }*/
+                
             }            
         })
         .catch( error => {

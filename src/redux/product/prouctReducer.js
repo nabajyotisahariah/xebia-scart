@@ -34,7 +34,7 @@ export const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading : false,
-                searchList : [],
+                searchList : action.payload,
                 error : null
             }        
         case Type.PRODUCT_FILTER: 

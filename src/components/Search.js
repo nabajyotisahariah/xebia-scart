@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { searchRequestAction } from "./../redux";
+import AutocompleteData from "./common/AutocompleteData";
 
 class Search extends React.Component {
 
@@ -15,7 +16,7 @@ class Search extends React.Component {
     console.log(" products ", products);
 
     return (
-      <div> <input type="text" name="search" placeholder="Search Products" /></div>
+      <div> <AutocompleteData/></div>
     );
   }
 }
