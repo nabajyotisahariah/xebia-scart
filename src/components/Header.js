@@ -16,7 +16,7 @@ class Header extends React.Component {
 
   render() {
     //const{} = this.state;
-    const { user, isLogin, userinfo, logoutAction } = this.props;
+    const { user, isLogin, userinfo, logoutAction, productCart } = this.props;
 
     console.log(" isLogin ", isLogin, " user ", user, " userinfo ", userinfo);
     return (
@@ -30,6 +30,8 @@ class Header extends React.Component {
         ) : (
           "Login"
         )}
+        <br/>
+        Cart {productCart}
       </header>
     );
   }
@@ -62,8 +64,10 @@ const userInfo = () => {
 const mapsStateToProps = (state) => {
   return {
     user: state.user,
+    productCart : state.products.addToCart.length, 
     isLogin: verifyIsLogin(),
     userinfo: userInfo(),
+    
   };
 };
 

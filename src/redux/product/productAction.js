@@ -101,3 +101,10 @@ export const filterRequestAction = () => {
         })
     }
 }
+
+export const addToCart = (item) => {
+    return {
+        type : Type.PRODUCT_ADDTOCART,
+        payload : item
+    }
+}

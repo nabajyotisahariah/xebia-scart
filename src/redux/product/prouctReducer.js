@@ -5,6 +5,7 @@ var initialState = {
     productList : [],
     searchList : [],
     filterList : [],
+    addToCart:[],
     error : null
 }
 export const productReducer = (state = initialState, action) => {
@@ -42,7 +43,15 @@ export const productReducer = (state = initialState, action) => {
                 loading : false,
                 filterList : action.payload,
                 error : null
-            }            
+            }   
+        case Type.PRODUCT_ADDTOCART: 
+            return {
+                ...state,
+                loading : false,
+                addToCart : [...state.addToCart, action.payload],
+                error : null
+            }       
+                     
         default:
             return state
     }

@@ -17,6 +17,7 @@ function App() {
           {/*<Login/>
           <ProductListing/>*/}
         </BrowserRouter>
+        {/*<Footer/>*/}
       </div>
     </Provider>
   );

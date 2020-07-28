@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {productRequestAction,searchRequestAction,filterRequestAction} from "./../redux";
+import {productRequestAction,searchRequestAction,filterRequestAction, addToCart} from "./../redux";
 import FilterListing from "./FilterListing";
 import Header from "./Header";
 
@@ -11,8 +11,12 @@ class ProductListing extends React.Component {
     this.state = {};
   }
 
-  _onClick = (product) => {
-    console.log("_onClick ", product);
+  addProduct = (_product) => {
+    console.log("addProduct ", _product," ", this.props.products.addToCart);      
+    if(_product) {
+      this.props.addToCartTrigger(_product);
+      localStorage.setItem("itemInfo", JSON.stringify(this.props.products.addToCart) );
+    }
   };
 
   componentDidMount() {
@@ -55,7 +59,7 @@ class ProductListing extends React.Component {
                     </div>
                     <div>
                       Brand {p.brand}{" "}
-                      <span onClick={() => this._onClick(p)}> Add </span>{" "}
+                      <span onClick={() => this.addProduct(p)}> Add </span>{" "}
                     </div>
                     <div>Price {p.price.final_price}$</div>
                   </div>
@@ -80,6 +84,7 @@ const mapsDispatchToProps = (dispatch) => {
     productInfoTrigger: () => dispatch(productRequestAction()),
     searchTrigger: () => dispatch(searchRequestAction("anc")),
     filterTrigger: () => dispatch(filterRequestAction()),
+    addToCartTrigger : (item) => dispatch(addToCart(item))
   };
 };
 
