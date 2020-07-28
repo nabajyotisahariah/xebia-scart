@@ -22,7 +22,7 @@ class Login extends React.Component {
 
   //a. Username: amigo |
   //b. Password: delta
-  _onClick = (username, password) => {
+  funcLogin = (username, password) => {
     var _that = this;
     this.props.loginTrigger(username, password).then((r) => {         
       if( r.payload != "Login Failed") {      
@@ -31,9 +31,9 @@ class Login extends React.Component {
     });
   };
 
-  _onChange = (type, value) => {
+  funcChange = (type, value) => {
     if (type && value) {
-      //console.log(" =_onChange== ", type, " ", this.state[type], " == ", value);
+      //console.log(" =funcChange== ", type, " ", this.state[type], " == ", value);
       this.setState({ [type]: value });
     }
   };
@@ -47,13 +47,13 @@ class Login extends React.Component {
     return (
       <div className="loginpage">
         <h1>Login page</h1>
-        <input type="text" name="username" value={username} onChange={(e) => this._onChange("username", e.target.value)}/>
+        <input type="text" name="username" value={username} onChange={(e) => this.funcChange("username", e.target.value)}/>
         {" "}
         <br />
-        <input type="password" name="password" value={password} onChange={(e) => this._onChange("password", e.target.value)}/>
+        <input type="password" name="password" value={password} onChange={(e) => this.funcChange("password", e.target.value)}/>
         {" "}
         <br />
-        <button onClick={() => this._onClick(username, password)}>Login{" "}</button>
+        <button onClick={() => this.funcLogin(username, password)}>Login{" "}</button>
         {user.error ? <div style={{"color":"red"}}>Error {user.error}</div>: null}
       </div>
     );

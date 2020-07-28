@@ -8,7 +8,7 @@ class Header extends React.Component {
     super(props);
   }
 
-  _onClick = () => {
+  funcLogout = () => {
     this.props.logoutAction();
     this.props.clearCart();
     this.props.history.push("/");
@@ -25,7 +25,7 @@ class Header extends React.Component {
         {isLogin ? (
           <p>
             {`Welcome ${userinfo.fullName}`} |{" "}
-            <button onClick={() => this._onClick()}>Logout </button>
+            <button onClick={() => this.funcLogout()}>Logout </button>
           </p>
         ) : (
           "Login"
