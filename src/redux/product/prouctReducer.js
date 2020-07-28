@@ -51,6 +51,13 @@ export const productReducer = (state = initialState, action) => {
                 addToCart : [...state.addToCart, action.payload],
                 error : null
             } 
+        case Type.PRODUCT_ADDTOCART_STORAGE: 
+            return {
+                ...state,
+                loading : false,
+                addToCart : action.payload,
+                error : null
+            }     
         case Type.PRODUCT_CLEARCART: 
             return {
                 ...state,

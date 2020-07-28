@@ -109,6 +109,14 @@ export const addToCart = (item) => {
     }
 }
 
+export const addToCartFromStorage = (item) => {
+    return {
+        type : Type.PRODUCT_ADDTOCART_STORAGE,
+        payload : item
+    }
+}
+
+
 export const clearCart = (item) => {
     return {
         type : Type.PRODUCT_CLEARCART,

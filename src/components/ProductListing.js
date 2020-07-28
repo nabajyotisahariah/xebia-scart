@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {productRequestAction,searchRequestAction,filterRequestAction, addToCart} from "./../redux";
+import {productRequestAction,searchRequestAction,filterRequestAction, addToCart, addToCartFromStorage} from "./../redux";
 import FilterListing from "./FilterListing";
 import Header from "./Header";
 
@@ -19,13 +19,22 @@ class ProductListing extends React.Component {
     }
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
+
     this.props.productInfoTrigger();
     this.props.filterTrigger();
 
+    console.log("ProductListing.componentDidMount ",localStorage.getItem("userInfo"));
     if (localStorage.getItem("userInfo") == null || localStorage.getItem("userInfo") == "null") {
       this.props.history.push("/");
     }
+    else {
+      console.log("=== ",JSON.parse(localStorage.getItem("itemInfo")))
+      if (localStorage.getItem("itemInfo") != null && localStorage.getItem("itemInfo") != "null") {
+        this.props.addToCartFromStorage( JSON.parse(localStorage.getItem("itemInfo")) )        
+      }
+    }
+    
   }
 
   render() {
@@ -81,7 +90,8 @@ const mapsDispatchToProps = (dispatch) => {
     productInfoTrigger: () => dispatch(productRequestAction()),
     searchTrigger: () => dispatch(searchRequestAction("anc")),
     filterTrigger: () => dispatch(filterRequestAction()),
-    addToCartTrigger : (item) => dispatch(addToCart(item))
+    addToCartTrigger : (item) => dispatch(addToCart(item)),
+    addToCartFromStorage : (item) => dispatch(addToCartFromStorage(item)),
   };
 };
 

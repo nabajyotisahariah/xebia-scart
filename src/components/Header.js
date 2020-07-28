@@ -39,10 +39,7 @@ class Header extends React.Component {
 
 const verifyIsLogin = () => {
   if (window) {
-    if (
-      localStorage.getItem("userInfo") != null &&
-      localStorage.getItem("userInfo") != "null"
-    ) {
+    if (localStorage.getItem("userInfo") != null && localStorage.getItem("userInfo") != "null") {
       return true;
     }
   }
@@ -51,11 +48,7 @@ const verifyIsLogin = () => {
 
 const userInfo = () => {
   if (window) {
-    if (
-
-      localStorage.getItem("userInfo") != null &&
-      localStorage.getItem("userInfo") != "null"
-    ) {
+    if (localStorage.getItem("userInfo") != null && localStorage.getItem("userInfo") != "null") {
       return JSON.parse(localStorage.getItem("userInfo"));
     }
   }
