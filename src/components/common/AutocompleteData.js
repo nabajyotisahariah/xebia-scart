@@ -4,7 +4,7 @@ import Autocomplete from 'react-autocomplete';
 import { searchRequestAction } from "./../../redux";
 //import "./Autocomplete.css";
 
-//https://ourcodeworld.com/articles/read/546/how-to-create-a-synchronous-and-asynchronous-autocomplete-input-in-reactjs
+
 class AutocompleteData extends React.Component {
 
     constructor(props, context) {
@@ -42,33 +42,6 @@ class AutocompleteData extends React.Component {
                 autocompleteData: this.props.products.searchList
             });
         }) 
-
-        console.log(" retrieveDataAsynchronously ",this.props.products.searchList)
-        // Url of your website that process the data and returns a
-        /*let url = `https://xebiascart.herokuapp.com/products?title=provogue`;
-        console.log("AutocompleteData ",url);
-        
-        // Configure a basic AJAX request to your server side API
-        // that returns the data according to the sent text
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.responseType = 'json';
-        xhr.onload = () => {
-            let status = xhr.status;
-            if (status == 200) {
-                // Update the state with the remote data and that's it !
-                _this.setState({
-                    autocompleteData: xhr.response
-                });
-
-                // Show response of your server in the console
-                console.log(xhr.response);
-            } else {
-                console.error("Cannot load data from remote source");
-            }
-        };
-
-        xhr.send();*/
     }
     
     /**
