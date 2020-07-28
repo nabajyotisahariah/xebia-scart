@@ -4,19 +4,21 @@ import { Provider } from "react-redux";
 import Login from "./components/Login";
 import store from "./redux/store";
 import ProductListing from "./components/ProductListing";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import "./App.css";
+import Wrapper from "./components/Wrapper";
+
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <BrowserRouter>
+        <Router path="/" component={Wrapper}>
           <Route path="/product" exact component={ProductListing} />
           <Route path="/" exact component={Login} />          
           {/*<Login/>
           <ProductListing/>*/}
-        </BrowserRouter>
+        </Router>
         {/*<Footer/>*/}
       </div>
     </Provider>
