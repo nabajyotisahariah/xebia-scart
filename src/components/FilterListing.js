@@ -14,15 +14,15 @@ const FilterListing = (props) => {
                                 
                     { filter.type == 'BRAND' ?
                         filter.values.length > 0 ?  filter.values.slice(0,5).map(
-                             f => (<p><input type="checkbox" value={f.value}/> {f.title}</p>)
+                             f => (<p key={f.title.toString()}><input type="checkbox" value={f.value}/> {f.title}</p>)
                         ) : null
                        : filter.type == 'COLOUR' ?
                         filter.values.length > 0 ?  filter.values.slice(0,5).map(
-                                f => (<p><input type="checkbox" value={f.color}/> {f.title}</p>)
+                                f => (<p key={f.title.toString()}><input type="checkbox" value={f.color}/> {f.title}</p>)
                         ) : null    
                        :  filter.type == 'PRICE' ?
                             filter.values.length > 0 ?  filter.values.slice(0,5).map(
-                               f => (<p><input type="checkbox" value={f.key}/> {f.displayValue}</p>)
+                               f => (<p key={f.displayValue.toString()}><input type="checkbox" value={f.key}/> {f.displayValue}</p>)
                             ) : null    
                         :null    
 

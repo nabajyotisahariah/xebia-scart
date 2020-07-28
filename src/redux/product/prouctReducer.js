@@ -50,7 +50,14 @@ export const productReducer = (state = initialState, action) => {
                 loading : false,
                 addToCart : [...state.addToCart, action.payload],
                 error : null
-            }       
+            } 
+        case Type.PRODUCT_CLEARCART: 
+            return {
+                ...state,
+                loading : false,
+                addToCart : [],
+                error : null
+            }           
                      
         default:
             return state

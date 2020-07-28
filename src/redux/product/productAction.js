@@ -108,3 +108,10 @@ export const addToCart = (item) => {
         payload : item
     }
 }
+
+export const clearCart = (item) => {
+    return {
+        type : Type.PRODUCT_CLEARCART,
+        payload : item
+    }
+}

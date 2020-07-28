@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logoutAction } from "./../redux";
+import { logoutAction, clearCart } from "./../redux";
 
 class Header extends React.Component {
   constructor(props) {
@@ -10,7 +10,8 @@ class Header extends React.Component {
   _onClick = () => {
     //var _that = this;
     console.log(" === ", this.props);
-    this.props.logoutAction()
+    this.props.logoutAction();
+    this.props.clearCart();
     this.props.history.push("/");
   };
 
@@ -74,6 +75,7 @@ const mapsStateToProps = (state) => {
 const mapsDispatchToProps = (dispatch) => {
   return {
     logoutAction: () => dispatch(logoutAction()),
+    clearCart: () => dispatch(clearCart()),
   };
 };
 
