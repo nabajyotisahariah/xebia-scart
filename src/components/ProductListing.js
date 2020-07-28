@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {productRequestAction, searchRequestAction, filterRequestAction } from './../redux';
 import FilterListing from './FilterListing';
+import Header from './Header';
 
 class ProductListing extends React.Component {
 
@@ -19,7 +20,7 @@ class ProductListing extends React.Component {
         this.props.productInfoTrigger();
         this.props.filterTrigger();
 
-        if(localStorage.getItem('userInfo')==null) {            
+        if(localStorage.getItem('userInfo')==null || localStorage.getItem('userInfo')=="null" ) {            
             this.props.history.push('/login')
         }
         
@@ -33,7 +34,8 @@ class ProductListing extends React.Component {
         console.log("products ",products)
         return (
             <div>
-                <div><FilterListing data = {this.props.products.filterList}/></div>
+                <Header {...this.props}/>
+                <div><FilterListing {...this.props} data = {this.props.products.filterList}/></div>
                 <div>
                     Product page <br/>
                     {

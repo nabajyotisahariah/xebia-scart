@@ -12,8 +12,9 @@ function App() {
 
   return (
     <Provider store={store}>      
-      <div className="App">
+      <div className="App">        
         <BrowserRouter> 
+          
           <Route path="/" component={Login}/>
           <Route path="/product" component={ProductListing}/>
           {/*<Login/>

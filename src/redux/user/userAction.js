@@ -22,29 +22,29 @@ export const failureRequestAction = (err) => {
     }
 }
 
-//a. Username: amigo
-//b. Password: delta
+
 export const loginAction = (username, password) => {
     return (dispatch) => {
         dispatch(loginInitiateAction());
-        axios.get('https://xebiascart.herokuapp.com/users?username=amigo', {})
+        return axios.get('https://xebiascart.herokuapp.com/users?username=amigo', {})
         .then( response => {
-            console.log(response);
+
+            //console.log(response);
             const user = response.data[0];
 
-            console.log("asyncLoginAction ",user," == ",user.username, " = ",user.password," == ",username," = ",password)
+            //console.log("asyncLoginAction ",user," == ",user.username, " = ",user.password," == ",username," = ",password)
             if(user.username == username && user.password == password) {
                 localStorage.setItem("userInfo", JSON.stringify(user))
-                dispatch( successRequestAction(user));
+                return dispatch( successRequestAction(user));
             }
             else {
-                dispatch( failureRequestAction("Login Failed"));
-            }
+                return dispatch( failureRequestAction("Login Failed"));
+            } 
             
         })
         .catch( error => {
             console.log(error);
-            dispatch(failureRequestAction(error));
+            return dispatch(failureRequestAction(error));
         })
         .finally(function () {
             // always executed
@@ -52,8 +52,9 @@ export const loginAction = (username, password) => {
     }    
 }
 
-export const logoutAction = () => {
-    return {
-        type:LOGOUT_USER_REQUEST        
-    }
+export const logoutAction = () => {    
+    return (dispatch) => {
+        dispatch({type:LOGOUT_USER_REQUEST});
+        localStorage.setItem("userInfo", null);
+    } 
 }
