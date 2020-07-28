@@ -24,7 +24,9 @@ export const failureRequestAction = (err) => {
 
 
 export const loginAction = (username, password) => {
+
     return (dispatch) => {
+
         dispatch(loginInitiateAction());
         return axios.get('https://xebiascart.herokuapp.com/users?username=amigo', {})
         .then( response => {
@@ -34,6 +36,7 @@ export const loginAction = (username, password) => {
 
             //console.log("asyncLoginAction ",user," == ",user.username, " = ",user.password," == ",username," = ",password)
             if(user.username == username && user.password == password) {
+                
                 localStorage.setItem("userInfo", JSON.stringify(user))
                 return dispatch( successRequestAction(user));
             }

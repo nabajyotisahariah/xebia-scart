@@ -23,19 +23,16 @@ class ProductListing extends React.Component {
     this.props.productInfoTrigger();
     this.props.filterTrigger();
 
-    if (
-      localStorage.getItem("userInfo") == null ||
-      localStorage.getItem("userInfo") == "null"
-    ) {
+    if (localStorage.getItem("userInfo") == null || localStorage.getItem("userInfo") == "null") {
       this.props.history.push("/");
     }
   }
 
   render() {
-    const { username, password } = this.state;
-    const { products, loginTrigger } = this.props;
 
-    console.log("products ", products);
+    const { products } = this.props;
+    console.log("render products ", products);
+
     return (
       <div className="prodctlisting">
         <Header {...this.props} />

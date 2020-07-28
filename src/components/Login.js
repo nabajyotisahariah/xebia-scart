@@ -24,9 +24,10 @@ class Login extends React.Component {
   //b. Password: delta
   _onClick = (username, password) => {
     var _that = this;
-    //console.log("_onClick username ", username, " password ", password);
-    this.props.loginTrigger(username, password).then((r) => {      
-      _that.props.history.push("/product");
+    this.props.loginTrigger(username, password).then((r) => {         
+      if( r.payload != "Login Failed") {      
+        _that.props.history.push("/product");
+      }
     });
   };
 
@@ -36,9 +37,12 @@ class Login extends React.Component {
       this.setState({ [type]: value });
     }
   };
+
   render() {
+
     const { username, password } = this.state;
     const { user, loginTrigger } = this.props;
+    //console.log("user ",user)
 
     return (
       <div className="loginpage">
@@ -46,10 +50,11 @@ class Login extends React.Component {
         <input type="text" name="username" value={username} onChange={(e) => this._onChange("username", e.target.value)}/>
         {" "}
         <br />
-        <input type="text" name="password" value={password} onChange={(e) => this._onChange("password", e.target.value)}/>
+        <input type="password" name="password" value={password} onChange={(e) => this._onChange("password", e.target.value)}/>
         {" "}
         <br />
         <button onClick={() => this._onClick(username, password)}>Login{" "}</button>
+        {user.error ? <div style={{"color":"red"}}>Error {user.error}</div>: null}
       </div>
     );
   }
@@ -63,8 +68,7 @@ const mapsStateToProps = (state) => {
 
 const mapsDispatchToProps = (dispatch) => {
   return {
-    loginTrigger: (username, password) =>
-      dispatch(loginAction(username, password)),
+    loginTrigger: (username, password) => dispatch(loginAction(username, password)),
   };
 };
 

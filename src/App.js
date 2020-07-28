@@ -12,8 +12,8 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <BrowserRouter>
-          <Route path="/" exact component={Login} />
-          <Route path="/product" component={ProductListing} />
+          <Route path="/product" exact component={ProductListing} />
+          <Route path="/" exact component={Login} />          
           {/*<Login/>
           <ProductListing/>*/}
         </BrowserRouter>

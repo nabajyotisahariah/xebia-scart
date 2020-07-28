@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logoutAction, clearCart } from "./../redux";
+import Search from "./Search";
 
 class Header extends React.Component {
   constructor(props) {
@@ -8,21 +9,19 @@ class Header extends React.Component {
   }
 
   _onClick = () => {
-    //var _that = this;
-    console.log(" === ", this.props);
     this.props.logoutAction();
     this.props.clearCart();
     this.props.history.push("/");
   };
 
   render() {
-    //const{} = this.state;
-    const { user, isLogin, userinfo, logoutAction, productCart } = this.props;
+    const { user, isLogin, userinfo, productCart } = this.props;
 
     console.log(" isLogin ", isLogin, " user ", user, " userinfo ", userinfo);
     return (
       <header>
         <div>Logo</div>
+        <div style={{"width": "50%"}}><Search/></div>
         {isLogin ? (
           <p>
             {`Welcome ${userinfo.fullName}`} |{" "}
@@ -53,6 +52,7 @@ const verifyIsLogin = () => {
 const userInfo = () => {
   if (window) {
     if (
+
       localStorage.getItem("userInfo") != null &&
       localStorage.getItem("userInfo") != "null"
     ) {
