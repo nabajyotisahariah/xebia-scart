@@ -9,13 +9,16 @@ import Footer from "./components/Footer";
 import "./App.css";
 import Wrapper from "./components/Wrapper";
 
+//https://www.tutorialspoint.com/reactjs/reactjs_router.htm
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <Router path="/" component={Wrapper}>
-          <Route path="/product" exact component={ProductListing} />
-          <Route path="/" exact component={Login} />          
+        <Router>
+          <Route  path="/" component={Wrapper}>
+            <Route path="/product" exact component={ProductListing} />
+            <Route path="/" exact component={Login} />          
+          </Route> 
           {/*<Login/>
           <ProductListing/>*/}
         </Router>

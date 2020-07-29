@@ -6,6 +6,7 @@ function Wrapper(props) {
     return (
         <div>
             Wrapper
+            {this.props.children}
         </div>
     );
 }
