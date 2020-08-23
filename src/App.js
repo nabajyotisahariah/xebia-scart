@@ -10,6 +10,11 @@ import "./App.css";
 import Wrapper from "./components/Wrapper";
 
 //https://www.tutorialspoint.com/reactjs/reactjs_router.htm
+
+//How to use environment variables in react application
+//https://www.youtube.com/watch?v=ukGeell7tS0
+console.log("process.env ",process.env)
+console.log(" -NODE_ENV- ",process.env.NODE_ENV,"  -PUBLIC_URL- ",process.env.PUBLIC_URL)
 function App() {
   return (
     <Provider store={store}>
